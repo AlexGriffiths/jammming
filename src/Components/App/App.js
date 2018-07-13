@@ -11,18 +11,18 @@ class App extends Component {
   constructor(props) {
       super(props);
       this.state = {SearchResults: [
-        {name: '',
-         artist: '',
-         album: '',
-         id: ''   },
-         {name:'' ,
-          artist:'' ,
-          album:'' ,
-          id:''    },
-          {name:'' ,
-           artist: '',
-           album: '',
-           id: ''   }
+        {name: 'song1',
+         artist: 'artist1',
+         album: 'album1',
+         id: '123'},
+         {name:'song2' ,
+          artist:'artist2' ,
+          album:'album2' ,
+          id:'456'    },
+          {name:'song3' ,
+           artist: 'artist3',
+           album: 'album3',
+           id: '789'   }
       ]
     }
   }
