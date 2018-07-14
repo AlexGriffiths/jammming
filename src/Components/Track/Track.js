@@ -1,27 +1,36 @@
 import React, { Component } from 'react';
 import './Track.css'
 
-export class track extends React.Component {
+export class Track extends React.Component {
 
-// Below is from stage27 not sure it's right at all!
+  constructor(props) {
+      super(props);
 
-/*  renderAction() {
-      if (this.isRemoval) {
-        return <a className="Track-action">-</a>
-      } else {
-          return <a className="Track-action">+</a>
-        }
-      } */
+      this.addTrack = this.addTrack.bind(this);
+      this.removeTrack = this.removeTrack.bind(this);
+
+    }
+
+  addTrack() {
+      this.props.onAdd(this.props.track);
+    }
+
+  renderAction() {
+    if (this.props.isRemoval) {
+      return <a className="Track-action" onClick={this.removeTrack}>-</a>
+    }
+    return <a className="Track-action" onClick={this.addTrack}>+</a>;
+  }
 
   render() {
     return (
       <div className="Track">
         <div className="Track-information">
-          <h3>'track name will go here'</h3>
-          <p>'track artist will go here | track album will go here '</p>
+          <h3>{this.props.track.name}</h3>
+          <p>{this.props.track.artist} | {this.props.track.album}</p>
         </div>
-        <a className="Track-action">' + or - will go here '</a>
       </div>
-      )
+    );
   }
+
 }
