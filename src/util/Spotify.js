@@ -7,11 +7,11 @@ let accessToken;
 
 const Spotify  = {
 
-
   getAccessToken() {
     if (accessToken) {
       return accessToken;
     }
+
 
   const urlAccessToken = window.location.href.match(/access_token=([^&]*)/);
   const urlExpiresIn = window.location.href.match(/expires_in=([^&]*)/);
@@ -20,7 +20,7 @@ const Spotify  = {
     const expiresIn = urlExpiresIn[1];
     window.setTimeout(() => accessToken = '', expiresIn * 1000);
     window.history.pushState('Access Token', null, '/');
-  } else {
+   } else {
     const accessURI = `${accessURIBase}?client_id=${clientId}&response_type=token&scope=playlist-modify-public&redirect_uri=${redirectURI}`;
     window.location = accessURI;
     }
@@ -28,7 +28,7 @@ const Spotify  = {
 
   search(term) {
     const accessToken = Spotify.getAccessToken();
-    return fetch(`${spotifyURIBase}search?type=track&q=${term}`, { // retrival of the info for the term supplied.
+    return fetch(`${spotifyURIBase}search?type=track&q=${term}`, {
       headers: {
         Authorization: `Bearer ${accessToken}`
       }

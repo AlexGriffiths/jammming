@@ -13,13 +13,13 @@ class App extends Component {
       super(props);
       this.state = {
         searchResults: [],
-        playlistName: 'New Playlist',
-        playlistTracks: []
+        playListName: 'New Playlist',
+        playListTracks: []
       }
 
      this.addTrack = this.addTrack.bind(this);
      this.removeTrack = this.removeTrack.bind(this);
-     this.updatePlaylistName = this.updatePlaylistName.bind(this);
+     this.updatePlayListName = this.updatePlayListName.bind(this);
      this.savePlaylist = this.savePlaylist.bind(this);
      this.search = this.search.bind(this);
   }
@@ -31,13 +31,13 @@ class App extends Component {
 
 
   savePlaylist() {
-    const trackUris = this.state.playlistTracks.map(playlistTrack => playlistTrack.uri);
-    Spotify.savePlaylist(this.state.playlistName, trackUris);
+    const trackUris = this.state.playListTracks.map(playlistTrack => playlistTrack.uri);
+    Spotify.savePlaylist(this.state.playListName, trackUris);
     this.setState({
       searchResults: []
     });
-    this.updatePlaylistName('griffPlaylist');
-    console.info(trackUris);
+      this.updatePlayListName('New Playlist');
+//    this.updatePlayListName('New Playlist');
   }
 
 
@@ -71,8 +71,8 @@ class App extends Component {
             <div className="App-playlist">
               <SearchResults searchResults = {this.state.searchResults} onAdd={this.addTrack}/>
               <Playlist
-                name={this.state.playlistName}
-                playlistTracks={this.state.playlistTracks}
+                name={this.state.playListName}
+                playlistTracks={this.state.playListTracks}
                 onRemove ={this.removeTrack}
                 onNameChange={this.updatePlayListName}
                 onSave={this.savePlaylist} />
